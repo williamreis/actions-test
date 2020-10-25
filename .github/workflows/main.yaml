@@ -16,11 +16,14 @@ jobs:
         run: sh ./.github/scripts/run-composer.sh
       - name: TDD PHPUnit
         run: sh ./.github/scripts/run-phpunit.sh
-
-
-
-
-
-
-
-
+      - name: Conexão SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_KEY }}
+          port: 22
+          script: |
+            cd /var/www/html/williamreis/actions-teste
+            git checkout master
+            git pull
