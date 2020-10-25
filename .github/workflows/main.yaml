@@ -25,5 +25,5 @@ jobs:
           port: 22
           script:
             cd /var/www/html/williamreis/actions-teste            
-            git checkout master
+            git checkout main
             git pull
