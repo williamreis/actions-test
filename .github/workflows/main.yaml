@@ -23,7 +23,9 @@ jobs:
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_KEY }}
           port: 22
-          script: |
+          script:
+            mkdir /var/www/html/williamreis
+            mkdir /var/www/html/williamreis/actions-teste
             cd /var/www/html/williamreis/actions-teste
             git checkout master
             git pull
