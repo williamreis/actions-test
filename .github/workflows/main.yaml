@@ -24,6 +24,6 @@ jobs:
           key: ${{ secrets.AWS_KEY }}
           port: 22
           script: |
-            cd /var/www/html/williamreis/actions-teste
+            cd /var/www/html/williamreis/actions-test
             git checkout main
             git pull
