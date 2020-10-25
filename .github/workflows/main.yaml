@@ -1,0 +1,39 @@
+name: App Workflow
+
+on:
+  push:
+      branches:
+        - master
+jobs:
+  build:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+#      https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Run Composer Install
+        run: sh ./.github/scripts/run-composer.sh
+      - name: TDD PHPUnit
+        run: sh ./.github/scripts/run-phpunit.sh
+      - name: Conexão SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEV }}
+          username: ubuntu
+          key: ${{ secrets.DEVELOPKEY }}
+          port: 22
+          script: |
+            cd /var/www/html/actions-teste
+            git checkout master
+            git pull
+
+
+
+
+
+
+
+
+
+
